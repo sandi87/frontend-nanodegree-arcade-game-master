@@ -2,7 +2,6 @@
 
 let points = 0;
 const congratModal = document.getElementById('congratModal');
-const loseModal = document.getElementById('loseModal');
 class Enemy {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -14,8 +13,6 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.speed = speed;
-
-
   }
 
   // Update the enemy's position, required method for game
@@ -63,7 +60,7 @@ class Player {
 
 
   }
-  // making our player not to go out map
+  // making our player not to go out of map
   update() {
     if (this.x >= 400) {
       this.x = 400;
@@ -87,7 +84,7 @@ class Player {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  // making our player to move
+  // making our player to move in all directions (dir)
   handleInput(dir) {
     switch (dir) {
       case "left":
@@ -107,8 +104,7 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the playe;
-// r object in a variable called player
+// Place the player object in a variable called player
 const allEnemies = [];
 const firstEnemy = new Enemy(60, 60, 100);
 allEnemies.push(firstEnemy);
@@ -136,6 +132,7 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+// initialize function winning the game and apearing modal 
 function win(){
 if (this.win = true){
    congratModal.style.display = 'block';
