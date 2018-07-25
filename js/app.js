@@ -1,7 +1,7 @@
 // Enemies our player must avoid
 
 let points = 0;
-const congratModal = document.getElementById('congratModal');
+const congratModal = document.getElementById("congratModal");
 class Enemy {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -35,13 +35,7 @@ class Enemy {
     ) {
       player.x = 200;
       player.y = 400;
-
-
-
-
-
     }
-
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -57,8 +51,6 @@ class Player {
     this.x = x;
     this.y = y;
     this.win = false;
-
-
   }
   // making our player not to go out of map
   update() {
@@ -132,15 +124,15 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
-// initialize function winning the game and apearing modal 
-function win(){
-if (this.win = true){
-   congratModal.style.display = 'block';
-   window.addEventListener('click', function() {
-     startNewGame();
-   })
-};
-};
+// initialize function winning the game and apearing modal
+function win() {
+  if ((this.win = true)) {
+    congratModal.style.display = "block";
+    window.addEventListener("click", function() {
+      startNewGame();
+    });
+  }
+}
 function startNewGame() {
   location.reload();
 }
