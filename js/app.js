@@ -1,7 +1,8 @@
 // Enemies our player must avoid
-let live = 3;
-let score = 0;
 
+let starsNum = 0;
+const congratModal = document.getElementById('congratModal');
+const loseModal = document.getElementById('loseModal');
 class Enemy {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -13,6 +14,8 @@ class Enemy {
     this.x = x;
     this.y = y;
     this.speed = speed;
+
+
   }
 
   // Update the enemy's position, required method for game
@@ -21,6 +24,7 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
     this.x += this.speed * dt;
     if (this.x >= 505) {
       this.x = 0;
@@ -32,11 +36,15 @@ class Enemy {
       player.y < this.y + 60 &&
       60 + player.y > this.y
     ) {
-      live--;
-      if (live === 0) gameOver();
       player.x = 200;
       player.y = 400;
+
+
+
+
+
     }
+
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -51,6 +59,9 @@ class Player {
     this.sprite = "images/char-cat-girl.png";
     this.x = x;
     this.y = y;
+    this.win = false;
+
+
   }
   // making our player not to go out map
   update() {
@@ -66,8 +77,11 @@ class Player {
     if (this.y <= -20) {
       this.x = 200;
       this.y = 400;
-      score++;
-      if (score === 3) winGame();
+      starsNum++;
+      if (starsNum === 3) {
+        this.win = true;
+        win();
+      }
     }
   }
   render() {
@@ -122,9 +136,14 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
-gameOver() {
-
+function win(){
+if (this.win = true){
+   congratModal.style.display = 'block';
+   window.addEventListener('click', function() {
+     startNewGame();
+   })
 };
-winGame() {
-  
+};
+function startNewGame() {
+  location.reload();
 }
