@@ -1,4 +1,6 @@
 // Enemies our player must avoid
+let live = 3;
+let score = 0;
 
 class Enemy {
   // Variables applied to each of our instances go here,
@@ -23,13 +25,15 @@ class Enemy {
     if (this.x >= 505) {
       this.x = 0;
     }
-
+    // checking for the collisions enemies with player
     if (
       player.x < this.x + 60 &&
       player.x + 60 > this.x &&
       player.y < this.y + 60 &&
       60 + player.y > this.y
     ) {
+      live--;
+      if (live === 0) gameOver();
       player.x = 200;
       player.y = 400;
     }
@@ -62,7 +66,8 @@ class Player {
     if (this.y <= -20) {
       this.x = 200;
       this.y = 400;
-      winGame();
+      score++;
+      if (score === 3) winGame();
     }
   }
   render() {
@@ -117,3 +122,9 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+gameOver() {
+
+};
+winGame() {
+  
+}
