@@ -1,6 +1,6 @@
 // Enemies our player must avoid
 
-let starsNum = 0;
+let points = 0;
 const congratModal = document.getElementById('congratModal');
 const loseModal = document.getElementById('loseModal');
 class Enemy {
@@ -77,8 +77,8 @@ class Player {
     if (this.y <= -20) {
       this.x = 200;
       this.y = 400;
-      starsNum++;
-      if (starsNum === 3) {
+      points++;
+      if (points === 3) {
         this.win = true;
         win();
       }
