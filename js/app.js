@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+
 class Enemy {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -22,7 +23,16 @@ class Enemy {
     if (this.x >= 505) {
       this.x = 0;
     }
-    checkCollisions()
+
+    if (
+      player.x < this.x + 60 &&
+      player.x + 60 > this.x &&
+      player.y < this.y + 60 &&
+      60 + player.y > this.y
+    ) {
+      player.x = 200;
+      player.y = 400;
+    }
   }
   // Draw the enemy on the screen, required method for game
   render() {
@@ -107,8 +117,3 @@ document.addEventListener("keyup", function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
-checkCollisions(player, enemy) {
-  if (enemy.y === player.y) {
-    if (player.x >= enemy.x - 50 && player.x <= enemy.x + 50) reset();
-  }
-}
