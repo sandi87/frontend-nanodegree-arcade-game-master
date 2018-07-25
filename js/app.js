@@ -6,7 +6,13 @@ class Enemy {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
 constructor(x,y, speed)
-    {this.sprite = 'images/enemy-bug.png';}
+    {
+      this.sprite = 'images/enemy-bug.png';
+      this.x = x;
+      this.y = y;
+      this.speed = speed;
+}
+
 
 
 // Update the enemy's position, required method for game
@@ -27,7 +33,9 @@ render() {
 // a handleInput() method.
 class Player {
   constructor(x,y) {
-    this.sprite = 'images/char-cat-girl.png'
+    this.sprite = 'images/char-cat-girl.png';
+    this.x = x;
+    this.y = y;
   }
   update() {
 
@@ -36,6 +44,7 @@ class Player {
   render() {
 
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
   }
   handleInput() {
 
@@ -44,9 +53,16 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Place the playe;
+// r object in a variable called player
 const allEnemies = [];
-const player = new Player(10, 10);
+const firstEnemy = new Enemy(60, 60, 100);
+allEnemies.push(firstEnemy);
+const secondEnemy = new Enemy(200, 200, 100);
+allEnemies.push(secondEnemy);
+const thirdEnemy = new Enemy(250, 130, 100);
+allEnemies.push(thirdEnemy);
+const player = new Player(200, 400);
 
 
 // This listens for key presses and sends the keys to your
